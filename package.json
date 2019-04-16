@@ -1,0 +1,22 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "a chat app using python, flask, react and postogre",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trevorton27/chat-app.git"
+  },
+  "author": "Trevor Mearns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trevorton27/chat-app/issues"
+  },
+  "homepage": "https://github.com/Trevorton27/chat-app#readme"
+}
