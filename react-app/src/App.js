@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import MessageList from './components/MessageList';
+import SendMessageForm from './components/SendMessageForm';
+import RoomList from './components/RoomList';
+import NewRoomForm from './components/NewRoomForm';
 import './App.css';
-import Chatbox from './Chatbox';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+
 
 class App extends Component {
   render() {
     return (
       
       <div className="App">
-      <Router>
-        <Route path="/Chatbox" component={Chatbox} />
-      </Router>
+        <MessageList />
+        <NewRoomForm />
+        <RoomList />
+        <SendMessageForm />
       </div>
-    
-
     );
   }
 }
