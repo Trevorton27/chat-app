@@ -10,16 +10,14 @@ import { tokenUrl, instanceLocator } from './config';
 
 
 
-class App extends Component {
+class App extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      messages: [],
-      joinableRooms: [],
-      joinedRooms: []
+      messages: []
     }
-    this.sendMessage = this.sendMessage.bind(this)
+  this.sendMessage = this.sendMessage.bind(this)
   }
 
   componentDidMount() {
@@ -41,17 +39,7 @@ class App extends Component {
     chatManager.connect()
     .then(currentUser => {
       this.currentUser = currentUser
-      this.currentUser.getJoinableRooms()
-      .then(joinableRooms => {
-        this.setState({
-          joinableRooms,
-          joinedRooms: this.currentUser.rooms
-        })
-      })
-      .catch(err => console.log('error on joinableRooms: ', err))
-
-
-      this.currentUser.subscribeToRoomMultipart({
+      this.currentUser.subscribeToRoom({
         roomId: '19396680',
         hooks: {
           onNewMessage: message => {
@@ -63,7 +51,6 @@ class App extends Component {
         }
       })
     })
-    .catch(err => console.log('error on connecting: ', err))
 
     chatManager.connect()
   .then(currentUser => {
@@ -86,7 +73,6 @@ class App extends Component {
     return (
       <div className="App">
         <MessageList messages={this.state.messages} />
-        <RoomList rooms={[...this.state.joinableRooms, ...this.state.joinedRooms]} />
         <SendMessageForm sendMessage={this.sendMessage} />
       </div>
     );
