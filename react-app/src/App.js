@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {ChatManager, TokenProvider} from '@pusher/chatkit-client';
 import MessageList from './components/MessageList';
 import SendMessageForm from './components/SendMessageForm';
-import RoomList from './components/RoomList';
-import NewRoomForm from './components/NewRoomForm';
 import './App.css';
 
 import { tokenUrl, instanceLocator } from './config';
@@ -18,6 +16,8 @@ class App extends React.Component {
       messages: []
     }
   this.sendMessage = this.sendMessage.bind(this)
+  this.userId = 'Trevorton';
+  this.roomId = '19396680';
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class App extends React.Component {
     });
     const chatManager = new ChatManager({
         instanceLocator,
-        userId: 'Trevorton',
+        userId: this.userId,
         tokenProvider: tokenProvider
     });
    
@@ -40,7 +40,7 @@ class App extends React.Component {
     .then(currentUser => {
       this.currentUser = currentUser
       this.currentUser.subscribeToRoom({
-        roomId: '19396680',
+        roomId: this.roomId,
         hooks: {
           onNewMessage: message => {
             console.log('message.text: ', message.parts);
@@ -49,7 +49,8 @@ class App extends React.Component {
             })
           }
         }
-      })
+      });
+      
     })
 
     chatManager.connect()
@@ -64,19 +65,39 @@ class App extends React.Component {
   sendMessage(text) {
     this.currentUser.sendMessage({
       text,
-      roomId: '19396680'
+      roomId: this.roomId
     })
-  }
+    .then(message =>{
+    this.currentUser.fetchMultipartMessages({
+      roomId: this.roomId,
+      limit: 10
+    })
+    .then(messages => {
+        console.log('All messages ', messages);
+        // do something with the messages
+        var formattedMessages = messages.map(message => {
+          return { 
+            senderId: message.senderId, 
+            text: message.parts[0].payload.content
+          };
+        });
+        this.setState({
+          messages: formattedMessages
+        })
+      })
+  });
+}
 
   render() {
-    console.log('this.state.messages: ', this.state.messages);
     return (
       <div className="App">
         <MessageList messages={this.state.messages} />
         <SendMessageForm sendMessage={this.sendMessage} />
       </div>
-    );
+    )
   }
 }
+  
 
-export default App;
+
+export default App
