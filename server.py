@@ -4,10 +4,9 @@ from flask import send_from_directory
 app = Flask(__name__)
 
 
-@app.route('/build/<path:/index.html>')
-def download_file('index.html'):
-   return send_from_directory(app.config['UPLOAD_FOLDER'],
-    'index.html', as_attachment=True )
+@app.route('/')
+def hello():
+   return send_from_directory('/build', 'index.html')
 
 
 
