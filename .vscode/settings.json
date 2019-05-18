@@ -1,3 +1,15 @@
 {
-    "python.pythonPath": "C:\\Users\\Trevor\\AppData\\Local\\Programs\\Python\\Python37\\python.exe"
+    "python.pythonPath": "C:\\Users\\Trevor\\AppData\\Local\\Programs\\Python\\Python37\\python.exe",
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 30,
+            "database": "chat_app",
+            "dialect": "PostgreSQL",
+            "name": "vscode",
+            "password": "banana",
+            "port": 5432,
+            "server": "127.0.0.1",
+            "username": "postgres"
+        }
+    ]
 }

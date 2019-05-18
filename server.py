@@ -25,11 +25,11 @@ print('Starting Flask. Yay!')
     # })
      #return json data for list
 
-    #if POST reques
+    #if POST request
     #create a user
     
 
-open_connection(sql_statement)
+open_connection("SELECT version();")
 
 
 if __name__ == "__main__":

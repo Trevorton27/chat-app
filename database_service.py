@@ -6,12 +6,12 @@ def open_connection(sql_statement):
                                     password = "banana",
                                     host = "localhost",
                                     port = "5432",
-                                    database = "postgres")
+                                    database = "chat_app")
         cursor = connection.cursor()
         # Print PostgreSQL Connection properties
         print ( connection.get_dsn_parameters(),"\n")
         # Print PostgreSQL version
-        cursor.execute(sql_statment)
+        cursor.execute(sql_statement)
         record = cursor.fetchone()
         print('record type: %s' %type(record[0]))
         print("You are connected to - ", record,"\n")
