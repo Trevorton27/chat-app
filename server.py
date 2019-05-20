@@ -2,7 +2,7 @@ from flask import Flask
 from flask import send_from_directory
 from flask import render_template
 import psycopg2
-from database_service import open_connection
+from database_service import open_connection, get_users, get_messages
 
 app = Flask(__name__,
     static_folder="react-app/build/static",
@@ -29,7 +29,15 @@ print('Starting Flask. Yay!')
     #create a user
     
 
-open_connection("SELECT version();")
+#message = open_connection("SELECT * FROM messages;")
+message = get_messages()
+print(message)
+
+user = get_users()
+print(user)
+
+#open_connection("SELECT * FROM users;")
+#print(user)
 
 
 if __name__ == "__main__":
