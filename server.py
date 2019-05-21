@@ -1,8 +1,6 @@
 from flask import Flask
-from flask import send_from_directory
-from flask import render_template
-import psycopg2
-from database_service import open_connection, get_users, get_messages
+from flask_restful import Api, Resource, reqparse
+from database_service import open_connection, get_users, get_messages, create_user
 
 app = Flask(__name__,
     static_folder="react-app/build/static",
@@ -27,18 +25,16 @@ print('Starting Flask. Yay!')
 
     #if POST request
     #create a user
-    
 
-#message = open_connection("SELECT * FROM messages;")
+    
 message = get_messages()
 print(message)
 
 user = get_users()
 print(user)
 
-#open_connection("SELECT * FROM users;")
-#print(user)
-
+createUser = create_user()
+print(createUser)
 
 if __name__ == "__main__":
     app.run()
