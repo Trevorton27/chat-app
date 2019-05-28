@@ -36,7 +36,8 @@ def get_messages():
             "id": message[0],
             "text": message[2]
         })
-        return messages
+        
+    return messages
    
 def get_users():
     user_records = open_connection("SELECT * FROM users;")
@@ -49,7 +50,7 @@ def get_users():
             "username": user[2]
         })
 
-        return users
+    return users
    
     
 

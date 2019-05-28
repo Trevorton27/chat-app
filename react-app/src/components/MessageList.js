@@ -1,20 +1,7 @@
 import React from 'react';
 import Message from './Message';
 
-const DUMMY_DATA = [
-    {
-        senderId: 'Trevorton',
-        text: 'Suuuuuuup.'
-    },
-    {
-        senderId: 'The Man Bat',
-        text: 'Can it possibly be?'   
-    },
-    {
-        senderId: 'Bruce Lee',
-        text: 'Whaaa!'
-    }
-]
+
 
 class MessageList extends React.Component {
     render() {

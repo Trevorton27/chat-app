@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Trevorton27/chat-app/issues"
   },
-  "homepage": "https://github.com/Trevorton27/chat-app#readme"
+  "homepage": "https://github.com/Trevorton27/chat-app#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
 }

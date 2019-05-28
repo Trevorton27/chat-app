@@ -24,6 +24,5 @@ def get_messages_endpoint():
     messages = get_messages()
     return jsonify(messages)
 
-
 if __name__ == "__main__":
     app.run(debug=True)
