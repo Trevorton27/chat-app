@@ -23,6 +23,7 @@ def get_users_endpoint():
 def get_messages_endpoint():
     messages = get_messages()
     return jsonify(messages)
+    print(messages)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -8,24 +8,31 @@ import axios from 'axios';
 class App extends React.Component {
 
   constructor() {
+    console.log('app.js was constructed');
     super()
     this.state = {
       messages: []
     }
   this.getMessages = this.getMessages.bind(this)
+  }
 
+  componentDidMount() {
+    console.log('componentDidMount');
+    console.log('outer this', this);
+    axios.get('/api/messages').then((response) => {
+      console.log(response.data);
+      console.log('inner this', this);
+      this.setState({
+        messages: response.data
+      });
+    });
   }
 
   getMessages() {
-    console.log('sendMessage function was run');
-    this.setState(
-     axios.get('/api/messages').then(function (response) {
-       console.log(response);
-     })
-      )
+    console.log('getMessages function was run');
+      
   }
-
-
+ 
 
   render() {
     return (
