@@ -52,7 +52,21 @@ def get_users():
 
     return users
    
+def post_message():
+    new_message = open_connection("ALTER TABLE public.messages DROP COLUMN text;")
     
+    message = []
+    for message in new_message:
+        message.append({
+            "text": message[2]
+        })
+    
+    message = ["Post request message text here."]
+    for message in new_message:
+        message.append({
+            "text": message[2]
+        })
+    return message
 
 #def create_user(username)
     

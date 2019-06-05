@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
 from flask_restful import Api, Resource, reqparse
-from database_service import open_connection, get_users, get_messages
+from database_service import open_connection, get_users, get_messages, post_message
 from flask import render_template
 
 app = Flask(__name__,
@@ -25,5 +25,12 @@ def get_messages_endpoint():
     return jsonify(messages)
     print(messages)
 
+@app.route('/api/messages')
+def post_message_endpoint():
+    message = post_message()
+    return jsonify(message)
+    print(message)
+
+    
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
