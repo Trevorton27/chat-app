@@ -27,6 +27,20 @@ class App extends React.Component {
       });
     });
   }
+  
+postMessage() {
+  console.log('postMessage function was run. All good in the hood')
+  axios.post('/api/messages', {
+   id: 3,
+   text: 'Test message post'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
   getMessages() {
     console.log('getMessages function was run');
