@@ -13,36 +13,37 @@ class App extends React.Component {
     this.state = {
       messages: []
     }
-  this.getMessages = this.getMessages.bind(this)
+  this.getMessages = this.getMessages.bind(this);
+  this.sendMessage = this.sendMessage.bind(this);
   }
 
-  componentDidMount() {
-    console.log('componentDidMount');
-    console.log('outer this', this);
-    axios.get('/api/messages').then((response) => {
-      console.log(response.data);
-      console.log('inner this', this);
-      this.setState({
-        messages: response.data
-      });
+componentDidMount() {
+  console.log('componentDidMount');
+  console.log('outer this', this);
+  axios.get('/api/messages').then((response) => {
+    console.log(response.data);
+    console.log('inner this', this);
+    this.setState({
+      messages: response.data
     });
-  }
-  
-postMessage() {
-  console.log('postMessage function was run. All good in the hood')
-  axios.post('/api/messages', {
-   id: 3,
-   text: 'Test message post'
-  })
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
   });
 }
 
-  getMessages() {
+sendMessage(message) {
+    console.log('postMessage function was run. All good in the hood')
+    axios.post('/api/messages', {
+     id: 3,
+     text: message
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+getMessages() {
     console.log('getMessages function was run');
       
   }
