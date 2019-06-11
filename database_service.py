@@ -53,15 +53,36 @@ def get_users():
     return users
    
 def create_message(user_id, message_text):
+    connection = psycopg2.connect(user = "postgres",
+                                    password = "banana",
+                                    host = "localhost",
+                                    port = "5432",
+                                    database = "chat_app")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO messages (user_id, text) VALUES (%(user_id)s, %(message_text)s) RETURNING id",
+    { "message_text": message_text, "user_id": user_id})
+    connection.commit()
 
-    #new_message = open_connection():
+    message_id = cursor.fetchone()
+    #print('message_id: %s' % message_id)
+
+    cursor.execute("SELECT * FROM messages WHERE id = %s", [ message_id ])
+    message_record = cursor.fetchone()
+    print(message_record)
+
+
+    print("user_id: %s" % user_id)
+    print("messasge_text: %s" % message_text)
+
+    return { 
+        "id": message_record[0], 
+        "user_id": message_record[1], 
+        "message_text": message_record[2], 
+        "created_at": message_record[3]
+        }
    
     
-    print("user_id: %s" % user_id)
-    print("message_text: %s" % message_text)
-
-    return { "user_id": user_id, "message_text": message_text }
-   
+  
 
 #def create_user(username)
     
