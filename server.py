@@ -22,15 +22,17 @@ def get_users_endpoint():
 @app.route('/api/messages', methods=['GET', 'POST'])
 def get_messages_endpoint():
     if request.method == 'POST':
+
+        #dictionary object
         post_request = request.get_json()
+
+        print('post_request %s' % post_request)
         
         message = create_message(post_request['user_id'], post_request['text'])
         return jsonify(message)
     else:
        messages = get_messages()
        return jsonify(messages)
-
-
 
 
 if __name__ == "__main__":

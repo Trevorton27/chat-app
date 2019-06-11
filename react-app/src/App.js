@@ -32,7 +32,7 @@ componentDidMount() {
 sendMessage(message) {
     console.log('postMessage function was run. All good in the hood')
     axios.post('/api/messages', {
-     id: 3,
+     user_id: 3,
      text: message
     })
     .then(function (response) {

@@ -53,7 +53,9 @@ def get_users():
     return users
    
 def create_message(user_id, message_text):
-    #new_message = open_connection("ALTER TABLE public.messages DROP COLUMN text;")
+
+    #new_message = open_connection():
+   
     
     print("user_id: %s" % user_id)
     print("message_text: %s" % message_text)
