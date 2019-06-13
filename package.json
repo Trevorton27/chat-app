@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Trevorton27/chat-app#readme",
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "react-router-dom": "^5.0.1"
   }
 }
