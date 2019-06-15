@@ -28,12 +28,13 @@ def open_connection(sql_statement):
             return record
 
 def get_messages():
-    message_records = open_connection("SELECT * FROM messages;")
+    message_records = open_connection("SELECT messages.id, users.username, messages.text FROM messages INNER JOIN users ON messages.user_id = users.id;")
     
     messages = []
     for message in message_records:
         messages.append({
             "id": message[0],
+            "username": message[1],
             "text": message[2]
         })
         
