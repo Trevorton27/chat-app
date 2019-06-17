@@ -12,10 +12,7 @@ class App extends React.Component {
     super()
     this.state = {
       messages: [],
-      currentUser: {
-      username: "Someguy",
-      id: 3
-      }
+      currentUser: null
     }
   this.getMessages = this.getMessages.bind(this);
   this.sendMessage = this.sendMessage.bind(this);
@@ -28,15 +25,32 @@ componentDidMount() {
   //if a user-id exists in local storage
   if (userId !== null) {
     console.log('user ID didnt come back null');
+    this.setState({
+      currentUser: {
+        id: userId
+      }
+    })
      //then search db for current user
   } else {
     console.log('user ID came back null');
     //else if no user-id exists in local storage
-    var username = prompt('Please enter a username', " ");
     //then prompt for username
+    var username = prompt('Please enter a username', " ");
     //create new user
-    //and set current user to newly created user
-  }
+    axios.post('/api/users', { username } )
+    .then(response => {
+      console.log(response);
+
+      //and set current user to newly created user
+    localStorage.setItem('chat-user-id', response.data.userId)
+    this.setState({
+      user: {
+        username: username,
+        id: response.data.userId
+      }
+    });
+  });    
+}
  
 
   

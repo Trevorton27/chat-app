@@ -52,6 +52,19 @@ def get_users():
         })
 
     return users
+
+def create_user(username):
+    connection = psycopg2.connect(user = "postgres",
+                                    password = "banana",
+                                    host = "localhost",
+                                    port = "5432",
+                                    database = "chat_app")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO public.users(username) VALUES (%s) RETURNING id;", [username])
+    connection.commit()
+
+    user_id = cursor.fetchone()
+    return user_id[0]
    
 def create_message(user_id, message_text):
     connection = psycopg2.connect(user = "postgres",

@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 from flask_restful import Api, Resource, reqparse
-from database_service import open_connection, get_users, get_messages, create_message
+from database_service import open_connection, get_users, get_messages, create_message, create_user
 
 
 app = Flask(__name__,
@@ -14,16 +14,23 @@ def index():
 
 print('Starting Flask. Yay!')
 
-@app.route('/api/users')
+@app.route('/api/users',  methods=['GET', 'POST'])
 def get_users_endpoint():
-    users = get_users()
-    return jsonify(users)
+     if request.method == 'POST':
+
+        post_request = request.get_json()
+        print(post_request['username'])
+        
+        user_id = create_user(post_request['username'])
+        return jsonify({ 'userID': user_id})
+     else:
+        users = get_users()
+        return jsonify(users)
 
 @app.route('/api/messages', methods=['GET', 'POST'])
 def get_messages_endpoint():
     if request.method == 'POST':
 
-        #dictionary object
         post_request = request.get_json()
 
         print('post_request %s' % post_request)
