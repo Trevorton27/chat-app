@@ -12,7 +12,10 @@ class App extends React.Component {
     super()
     this.state = {
       messages: [],
-      currentUser: null
+      currentUser: {
+        username: null,
+        id: null
+      }
     }
   this.getMessages = this.getMessages.bind(this);
   this.sendMessage = this.sendMessage.bind(this);
@@ -44,7 +47,7 @@ componentDidMount() {
       //and set current user to newly created user
     localStorage.setItem('chat-user-id', response.data.userId)
     this.setState({
-      user: {
+      currentUser: {
         username: username,
         id: response.data.userId
       }
