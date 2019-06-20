@@ -45,14 +45,14 @@ componentDidMount() {
       console.log(response);
 
       //and set current user to newly created user
-    localStorage.setItem('chat-user-id', response.data.userId)
-    this.setState({
-      currentUser: {
-        username: username,
-        id: response.data.userId
-      }
-    });
-  });    
+    localStorage.setItem('chat-user-id', response.data.userID)
+      this.setState({
+        currentUser: {
+          username: username,
+          id: response.data.userID
+        }
+      });
+    });    
 }
  
 
