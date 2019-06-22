@@ -39,7 +39,15 @@ def get_messages():
         })
         
     return messages
-   
+
+def get_single_user(id):
+    sql_statement = "SELECT * FROM users WHERE id = " + id
+    user_records = open_connection(sql_statement)
+    user = user_records[0]
+
+    return { "id": user[0], "firstName": user[1], "lastName": user[2], "userName": user[3], "createdAt": user[4]}
+
+
 def get_users():
     user_records = open_connection("SELECT * FROM users;")
 
