@@ -27,12 +27,14 @@ componentDidMount() {
   console.log('User ID: ', userId);
   //if a user-id exists in local storage
   if (userId !== null) {
-    console.log('user ID didnt come back null');
-    this.setState({
-      currentUser: {
-        id: userId
-      }
+    axios.get('api/users?user_id=' + userId)
+    .then((response) => {
+      this.setState({
+        currentUser: response.data.user
+      })
     })
+    console.log('user ID didnt come back null');
+   
      //then search db for current user
   } else {
     console.log('user ID came back null');
@@ -49,7 +51,7 @@ componentDidMount() {
       this.setState({
         currentUser: {
           username: username,
-          id: response.data.userID
+          id: response.data.userId
         }
       });
     });    
@@ -59,31 +61,24 @@ componentDidMount() {
   
 
 
+ 
+}
+
+sendMessage(message) {
+    return axios.post('/api/messages', {
+     user_id: this.state.currentUser.Id,
+     
+     text: message
+    });
+}
+
+getMessages() {
   axios.get('/api/messages').then((response) => {
     console.log(response.data);
     this.setState({
       messages: response.data
     });
   });
-}
-
-sendMessage(message) {
-    console.log('postMessage function was run. All good in the hood')
-    axios.post('/api/messages', {
-     user_id: this.state.currentUser.id,
-     text: message
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
-getMessages() {
-    console.log('getMessages function was run');
-      
   }
  
 
@@ -91,7 +86,7 @@ getMessages() {
     return (
       <div className="App">
         <MessageList messages={this.state.messages} />
-        <SendMessageForm sendMessage={this.sendMessage} />
+        <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
       </div>
     )
   }

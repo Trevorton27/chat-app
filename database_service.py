@@ -28,14 +28,20 @@ def open_connection(sql_statement):
             return record
 
 def get_messages():
-    message_records = open_connection("SELECT messages.id, users.username, messages.text FROM messages INNER JOIN users ON messages.user_id = users.id;")
+    message_records = open_connection('''SELECT messages.id, users.username, messages.text, messages.created_at
+                                        FROM messages 
+                                        INNER JOIN users 
+                                        ON messages.user_id = users.id 
+                                        ORDER BY messages.created_at;
+                                        ''')
     
     messages = []
     for message in message_records:
         messages.append({
             "id": message[0],
             "username": message[1],
-            "text": message[2]
+            "text": message[2],
+            "created_at": message[3]
         })
         
     return messages
@@ -81,8 +87,10 @@ def create_message(user_id, message_text):
                                     port = "5432",
                                     database = "chat_app")
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO messages (user_id, text) VALUES (%(user_id)s, %(message_text)s) RETURNING id",
-    { "message_text": message_text, "user_id": user_id})
+    cursor.execute('''INSERT INTO messages (user_id, text) 
+                    VALUES (%(user_id)s, %(message_text)s) 
+                    RETURNING id''',
+                  { "message_text": message_text, "user_id": user_id})
     connection.commit()
 
     message_id = cursor.fetchone()
