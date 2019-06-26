@@ -22,51 +22,38 @@ class App extends React.Component {
   }
 
 componentDidMount() {
-  //check local storage for user-id
   let userId = localStorage.getItem('chat-user-id');
-  console.log('User ID: ', userId);
-  //if a user-id exists in local storage
+
   if (userId !== null) {
     axios.get('api/users?user_id=' + userId)
-    .then((response) => {
-      this.setState({
-        currentUser: response.data.user
+      .then((response) => {
+        this.setState({
+          currentUser: response.data
+        })
       })
-    })
-    console.log('user ID didnt come back null');
-   
-     //then search db for current user
   } else {
-    console.log('user ID came back null');
-    //else if no user-id exists in local storage
-    //then prompt for username
     var username = prompt('Please enter a username', " ");
-    //create new user
-    axios.post('/api/users', { username } )
-    .then(response => {
-      console.log(response);
 
-      //and set current user to newly created user
-    localStorage.setItem('chat-user-id', response.data.userID)
-      this.setState({
-        currentUser: {
-          username: username,
-          id: response.data.userId
-        }
+    axios.post('/api/users', {
+        username
+      })
+      .then(response => {
+
+        localStorage.setItem('chat-user-id', response.data.userId)
+        this.setState({
+          currentUser: {
+            username: username,
+            id: response.data
+          }
+        });
       });
-    });    
-}
- 
-
-  
-
-
- 
+  }
+  this.getMessages();
 }
 
 sendMessage(message) {
     return axios.post('/api/messages', {
-     user_id: this.state.currentUser.Id,
+     user_id: this.state.currentUser.id,
      
      text: message
     });

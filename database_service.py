@@ -51,7 +51,7 @@ def get_single_user(id):
     user_records = open_connection(sql_statement)
     user = user_records[0]
 
-    return { "id": user[0], "firstName": user[1], "lastName": user[2], "userName": user[3], "createdAt": user[4]}
+    return { "id": user[0], "firstName": user[1], "lastName": user[2], "username": user[3], "createdAt": user[4]}
 
 
 def get_users():
@@ -89,7 +89,7 @@ def create_message(user_id, message_text):
     cursor = connection.cursor()
     cursor.execute('''INSERT INTO messages (user_id, text) 
                     VALUES (%(user_id)s, %(message_text)s) 
-                    RETURNING id''',
+                    RETURNING *''',
                   { "message_text": message_text, "user_id": user_id})
     connection.commit()
 
