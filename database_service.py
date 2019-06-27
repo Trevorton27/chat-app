@@ -10,21 +10,17 @@ def open_connection(sql_statement):
                                     port = "5432",
                                     database = "chat_app")
         cursor = connection.cursor()
-        # Print PostgreSQL Connection properties
-        #print ( connection.get_dsn_parameters(),"\n")
-        # Print PostgreSQL version
         cursor.execute(sql_statement)
         record = cursor.fetchall()
         print('record type: %s' %type(record))
-        #print("You, sir, are connected to - ", record, "\n")
     except (Exception, psycopg2.Error) as error :
         print ("Error while connecting to PostgreSQL", error)
     finally:
-        #closing database connection.
+
         if(connection):
             cursor.close()
             connection.close()
-            #print("PostgreSQL connection is closed")
+           
             return record
 
 def get_messages():
@@ -94,9 +90,8 @@ def create_message(user_id, message_text):
     connection.commit()
 
     message_id = cursor.fetchone()
-    #print('message_id: %s' % message_id)
 
-    cursor.execute("SELECT * FROM messages WHERE id = %s", [ message_id ])
+    cursor.execute("SELECT * FROM messages;")
     message_record = cursor.fetchone()
     print(message_record)
 
@@ -114,11 +109,3 @@ def create_message(user_id, message_text):
     
   
 
-#def create_user(username)
-    
-
-#def createMessage(userID, text):
-    # more cody stuff here
-
-#def getMessage(id):
-    #use cody stuff to get message by id
