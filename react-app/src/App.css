@@ -1,9 +1,9 @@
 :root {
-    --main-color: #5ea3d0;
+    --main-color: #fd01b8;
     --secondary-color: white;
     --main-text-color: #3e5869;
     --secondary-text-color: #b0c7d6;
-    --send-message-form: #F5F5F5;
+    --send-message-form:#fd01b8;
 }
 
 html, body {
@@ -136,7 +136,7 @@ html, body {
     margin-bottom: 6px;
 }
 .message .message-text {
-    background: var(--main-color);
+    background: #fd01b8;
     color: var(--secondary-color);
     display: inline;
     padding: 4px 8px;
