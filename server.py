@@ -7,6 +7,7 @@ app = Flask(__name__,
     static_folder="react-app/build/static",
     template_folder="react-app/build"
     )
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 @app.route('/')
 def index():
