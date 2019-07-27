@@ -3,6 +3,7 @@ import MessageList from './components/MessageList';
 import SendMessageForm from './components/SendMessageForm';
 import './App.css';
 import axios from 'axios';
+import { MDBContainer, MDBRow, MDBCol, MDBScrollbar } from "mdbreact";
 
 
 class App extends React.Component {
@@ -71,11 +72,22 @@ getMessages() {
  
 
   render() {
+
+    //const scrollContainerStyle = {width: "100%", maxHeight: "50%" } <MDBScrollbar className="scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}> </MDBScrollbar>
+
     return (
-      <div className="App">
-        <MessageList messages={this.state.messages} />
-        <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
-      </div>
+      <MDBContainer >
+       < MDBRow className="App">
+        <MDBCol md="3"></MDBCol>
+            <MDBCol md="6" className="container">
+              
+                <MessageList messages={this.state.messages} />
+                <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
+             
+            </MDBCol>
+          <MDBCol md="3"></MDBCol>
+        </MDBRow>
+      </MDBContainer>
     )
   }
 }
