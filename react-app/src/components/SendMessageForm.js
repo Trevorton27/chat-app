@@ -17,12 +17,16 @@ class SendMessageForm extends React.Component {
         })
     }
 
+
    handleSubmit(e) {
         e.preventDefault()
         this.props.sendMessage(this.state.message)
         .then(response => {
             console.log(response);
             this.props.getMessages();
+            this.setState({
+                message: ''
+            });
         })
         .catch(function(error) {
             console.log(error);

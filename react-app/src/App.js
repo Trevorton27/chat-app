@@ -72,14 +72,13 @@ getMessages() {
  
 
   render() {
-
-    //const scrollContainerStyle = {width: "100%", maxHeight: "50%" } <MDBScrollbar className="scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}> </MDBScrollbar>
+    const containerStyle = { overflowY: "auto", height: "500px" };
 
     return (
       <MDBContainer >
        < MDBRow className="App">
         <MDBCol md="3"></MDBCol>
-            <MDBCol md="6" className="container">
+            <MDBCol style={ containerStyle } md="6" className="container">
               
                 <MessageList messages={this.state.messages} />
                 <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />

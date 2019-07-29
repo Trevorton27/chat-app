@@ -6,24 +6,30 @@ import { MDBContainer } from "mdbreact";
 
 
 class MessageList extends React.Component {
-    
- 
   render() {
-
-    const scrollContainerStyle = {width: "100%", maxHeight: "50%" }
+    
         return (
-          
             <MDBContainer className="message-list">
               {this.props.messages.map((message, index) => {
+                const messageComponent = <Message className="col" key={index} username={message.username} text={message.text} />;
+                if(message.username === 'SomeGuy') {
                   return (
-                    <Message key={index} username={message.username} text={message.text} />
-                  )
-              })}
-            </MDBContainer>
-            
-            
-            
-        )
+                    <div className="row">
+                      <div className="col"></div>
+                      {messageComponent}
+                    </div>
+                  );
+                } 
+                  return (
+                    <div className="row">
+                      {messageComponent}
+                      <div className="col"></div>
+                    </div>
+                  );
+                })
+              }
+            </MDBContainer>   
+        );
     }
 }
 
