@@ -1,18 +1,35 @@
 import React from 'react';
 import Message from './Message';
-import { MDBContainer } from "mdbreact";
+import axios from 'axios';
+
 
 
 
 
 class MessageList extends React.Component {
+
+  axios.get('api/users?user_id=' + userId)
+  .then((response) => {
+    this.setState({
+      currentUser: response.data
+    })
+  })
+  
   render() {
     
         return (
-            <MDBContainer className="message-list">
+          <div className="container">
+            <div className="message-list">
               {this.props.messages.map((message, index) => {
                 const messageComponent = <Message className="col" key={index} username={message.username} text={message.text} />;
-                if(message.username === 'SomeGuy') {
+                const currentUser = localStorage.setItem('chat-user-id', response.data.userId)
+                this.setState({
+                  currentUser: {
+                    username: username,
+                    id: response.data
+                  }
+                });
+                if(message.username === currentUser) {
                   return (
                     <div className="row">
                       <div className="col"></div>
@@ -28,7 +45,8 @@ class MessageList extends React.Component {
                   );
                 })
               }
-            </MDBContainer>   
+            </div>   
+          </div>
         );
     }
 }

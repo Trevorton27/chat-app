@@ -75,18 +75,21 @@ getMessages() {
     const containerStyle = { overflowY: "auto", height: "500px" };
 
     return (
-      <MDBContainer >
-       < MDBRow className="App">
-        <MDBCol md="3"></MDBCol>
-            <MDBCol style={ containerStyle } md="6" className="container">
-              
-                <MessageList messages={this.state.messages} />
+      
+        <div className="container">
+          <div className="col"></div>
+            <div className="col-6">
+              <div style={ containerStyle } >
+                <MessageList messages={this.state.messages} currentUser={this.props.currentUser}/> 
+              </div> 
+              <div>
                 <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
-             
-            </MDBCol>
-          <MDBCol md="3"></MDBCol>
-        </MDBRow>
-      </MDBContainer>
+              </div>
+            </div>
+          <div className="col"></div>
+        </div>
+     
+    
     )
   }
 }
