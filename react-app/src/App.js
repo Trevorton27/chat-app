@@ -78,10 +78,11 @@ getMessages() {
     return (
       
         <div className="container">
+          <div className="spacer">
          <div className="row">
            <div className="col-3"></div>
-              <div className="col-6">
-                  <div style={ containerStyle } >
+              <div className="chat-window col-6">
+                  <div className="chat-window-wrapper" style={ containerStyle } >
                     <MessageList messages={this.state.messages} currentUser={this.state.currentUser}/> 
                   </div> 
                   <div>
@@ -89,6 +90,7 @@ getMessages() {
                   </div>
               </div>
               <div className="col-3"></div>
+            </div>
             </div>
         </div>
       
