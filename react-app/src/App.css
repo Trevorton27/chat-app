@@ -1,15 +1,13 @@
 .app{
     background: lightgray;
- 
 }
-
 .container{
-    
-    padding-top: 5%;
-    padding-bottom: 10%;
-    
+    padding-top: 1%;
+    padding-bottom: 1%; 
 }
-
+.bg{
+    background: lightslategray;
+}
 .message-list{
     text-align: center;
     background: lightslategray;
@@ -17,36 +15,25 @@
     border-width: 20px;
     border-color: green;
 }
-
-.message{
-    margin-top-bottom: 5px;
-}
-
-.message .message-username {
-    background: lightblue;
+.message-username {
     color: white;
     opacity: 0.9;
     margin-bottom: 6px;
-    margin-left: 30%;
-    margin-right: 30%;
-    font-size: 16px;
+    text-align: left;
+    font-size: 11px;
     border-radius: 8px;
     padding-left: 6px;
-    padding-right: 6px;
     padding-top: 6px;
-    padding-bottom: 6px;
 }
-
-.message .message-text{
+ .message-text{
     background: lightgray;
-    display: inline;
-    padding: 4px 8px;
+    display: flex;
+    padding: 1px 0px 8px 0px;
     border-radius: 8px;
     align-content: left;
     padding-left: 5%;
     padding-right: 5%;
 }
-
 .send-message-form {
     background: blue;
     display: flex;
@@ -58,11 +45,19 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
 .input-field{
     width: 100%;
     border-radius: 10px;
     text-align: center;
     height: 10%;
-
+}
+.left{
+    background:black;   
+}
+.right{
+    background:black;   
+}
+.spacer{
+    padding-top: 80px;
+    padding-bottom: 80px; 
 }

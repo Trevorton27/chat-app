@@ -1,13 +1,7 @@
 import React from 'react';
 import Message from './Message';
 
-
-
-
-
 class MessageList extends React.Component {
-
-  
 
   render() {
     
@@ -15,20 +9,20 @@ class MessageList extends React.Component {
           <div className="container">
             <div className="message-list">
               {this.props.messages.map((message, index) => {
-                const messageComponent = <Message className="col" key={index} username={message.username} text={message.text} />;
+                const messageComponent = <Message className="message-component" key={index} username={message.username} text={message.text} />;
              
-                if(message.username === 'SomeGuy') {
+                if(message.username === this.props.currentUser.username) {
                   return (
-                    <div className="row">
-                      <div className="col"></div>
-                      {messageComponent}
+                    <div className="message row">
+                      <div className="bg col-6"></div>
+                     <div className="bg col-6" > {messageComponent} </div>
                     </div>
                   );
                 } 
                   return (
-                    <div className="row">
-                      {messageComponent}
-                      <div className="col"></div>
+                    <div className="message row">
+                      <div className="bg col-6" >{messageComponent}</div>
+                      <div className="bg col-6"></div>
                     </div>
                   );
                 })

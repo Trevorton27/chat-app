@@ -3,7 +3,7 @@ import MessageList from './components/MessageList';
 import SendMessageForm from './components/SendMessageForm';
 import './App.css';
 import axios from 'axios';
-import { MDBContainer, MDBRow, MDBCol, MDBScrollbar } from "mdbreact";
+
 
 
 class App extends React.Component {
@@ -28,6 +28,7 @@ componentDidMount() {
   if (userId !== null) {
     axios.get('api/users?user_id=' + userId)
       .then((response) => {
+        console.log('response: ', response)
         this.setState({
           currentUser: response.data
         })
@@ -77,17 +78,20 @@ getMessages() {
     return (
       
         <div className="container">
-          <div className="col"></div>
-            <div className="col-6">
-              <div style={ containerStyle } >
-                <MessageList messages={this.state.messages} currentUser={this.props.currentUser}/> 
-              </div> 
-              <div>
-                <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
+         <div className="row">
+           <div className="col-3"></div>
+              <div className="col-6">
+                  <div style={ containerStyle } >
+                    <MessageList messages={this.state.messages} currentUser={this.state.currentUser}/> 
+                  </div> 
+                  <div>
+                    <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
+                  </div>
               </div>
+              <div className="col-3"></div>
             </div>
-          <div className="col"></div>
         </div>
+      
      
     
     )

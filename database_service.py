@@ -89,15 +89,13 @@ def create_message(user_id, message_text):
                   { "message_text": message_text, "user_id": user_id})
     connection.commit()
 
-    message_id = cursor.fetchone()
-
     cursor.execute("SELECT * FROM messages;")
     message_record = cursor.fetchone()
-    print(message_record)
+   
 
 
     print("user_id: %s" % user_id)
-    print("messasge_text: %s" % message_text)
+    print("message_text: %s" % message_text)
 
     return { 
         "id": message_record[0], 
