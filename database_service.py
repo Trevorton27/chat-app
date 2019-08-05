@@ -21,7 +21,7 @@ def open_connection(sql_statement):
             cursor.close()
             connection.close()
            
-            return record
+        return record
 
 def get_messages():
     message_records = open_connection('''SELECT messages.id, users.username, messages.text, messages.created_at
@@ -86,7 +86,7 @@ def create_message(user_id, message_text):
     cursor.execute('''INSERT INTO messages (user_id, text) 
                     VALUES (%(user_id)s, %(message_text)s) 
                     RETURNING *''',
-                  { "message_text": message_text, "user_id": user_id})
+                  {"message_text": message_text, "user_id": user_id})
     connection.commit()
 
     cursor.execute("SELECT * FROM messages;")
