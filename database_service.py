@@ -47,7 +47,11 @@ def get_single_user(id):
     user_records = open_connection(sql_statement)
     user = user_records[0]
 
-    return { "id": user[0], "firstName": user[1], "lastName": user[2], "username": user[3], "createdAt": user[4]}
+    return { "id": user[0], 
+             "firstName": user[1], 
+             "lastName": user[2], 
+             "username": user[3], 
+             "createdAt": user[4]}
 
 
 def get_users():
@@ -90,6 +94,7 @@ def create_message(user_id, message_text):
     connection.commit()
 
     cursor.execute("SELECT * FROM messages;")
+    connection.commit()
     message_record = cursor.fetchone()
    
 

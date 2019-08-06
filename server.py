@@ -23,7 +23,7 @@ def get_users_endpoint():
         print(post_request['username'])
         
         user_id = create_user(post_request['username'])
-        return jsonify({ 'userID': user_id})
+        return jsonify( user_id)
      else:
         query_param = request.args.get('user_id')
         if query_param:

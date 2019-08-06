@@ -42,6 +42,7 @@ componentDidMount() {
       .then(response => {
 
         localStorage.setItem('chat-user-id', response.data.userId)
+        console.log(localStorage.setItem());
         this.setState({
           currentUser: {
             username: username,
@@ -57,9 +58,8 @@ componentDidMount() {
 sendMessage(message) {
     return axios.post('/api/messages', {
      user_id: this.state.currentUser.id,
-     
      text: message
-    });
+    }); 
 }
 
 getMessages() {
