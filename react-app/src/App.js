@@ -9,7 +9,6 @@ import axios from 'axios';
 class App extends React.Component {
 
   constructor() {
-    console.log('app.js was constructed');
     super()
     this.state = {
       messages: [],
@@ -32,6 +31,8 @@ componentDidMount() {
         this.setState({
           currentUser: response.data
         })
+        console.log('UserId is: ', userId);
+        return userId
       })
   } else {
     var username = prompt('Please enter a username', " ");
@@ -40,9 +41,7 @@ componentDidMount() {
         username
       })
       .then(response => {
-
         localStorage.setItem('chat-user-id', response.data.userId)
-        console.log(localStorage.setItem());
         this.setState({
           currentUser: {
             username: username,
