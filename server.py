@@ -15,7 +15,7 @@ def index():
 
 print('Starting Flask. Yay!')
 
-@app.route('/api/users',  methods=['GET', 'POST'])
+@app.route('/api/users',  methods=['GET', 'POST']) 
 def get_users_endpoint():
      if request.method == 'POST':
 
@@ -23,9 +23,9 @@ def get_users_endpoint():
         print(post_request['username'])
         
         user_id = create_user(post_request['username'])
-        return jsonify( user_id)
+        return jsonify(user_id)
      else:
-        query_param = request.args.get('user_id')
+        query_param = request.args.get({"UserId": user_id})
         if query_param:
             user = get_single_user(query_param)
             return jsonify(user)

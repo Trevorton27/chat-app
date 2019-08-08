@@ -27,12 +27,10 @@ componentDidMount() {
   if (userId !== null) {
     axios.get('api/users?user_id=' + userId)
       .then((response) => {
-        console.log('response: ', response)
+        console.log('response: ', response);
         this.setState({
           currentUser: response.data
         })
-        console.log('UserId is: ', userId);
-        return userId
       })
   } else {
     var username = prompt('Please enter a username', " ");
@@ -41,7 +39,8 @@ componentDidMount() {
         username
       })
       .then(response => {
-        localStorage.setItem('chat-user-id', response.data.userId)
+        localStorage.setItem('chat-user-id', response.data);
+        console.log('response: ', response);
         this.setState({
           currentUser: {
             username: username,
