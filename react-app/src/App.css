@@ -30,6 +30,17 @@
     padding-left: 5%;
     padding-right: 5%;
 }
+.nav-item a{
+    color: white;
+    font-weight: 500;
+    font-size: 18;
+    padding: 10px;
+  
+}
+.nav{
+    text-align: center;
+    
+}
 .send-message-form {
     background: blue;
     display: flex;
@@ -56,6 +67,9 @@
 .spacer{
     margin-top: 80px;
     margin-bottom: 80px;
+}
+.nav-tabs{
+    border-bottom: 0px;
 }
 
 

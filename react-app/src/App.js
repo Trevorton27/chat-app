@@ -1,8 +1,9 @@
 import React from 'react';
-import MessageList from './components/MessageList';
-import SendMessageForm from './components/SendMessageForm';
+import ChatWindow from './components/ChatWindow';
+import About from './components/About';
 import './App.css';
 import axios from 'axios';
+import {Route, Link, BrowserRouter as Router } from 'react-router-dom';
 
 
 
@@ -71,26 +72,27 @@ getMessages() {
  
 
   render() {
-    const containerStyle = { overflowY: "auto", height: "500px" };
+    
 
     return (
+      <div>
+        <Router>
+          <nav className="navbar navbar-dark bg-primary">
+              <ul className="nav nav-tabs justify-content-center">
+                <li className="nav-item active">
+                  <Link to="/About">About</Link>
+                </li>
+                <li className="nav-item active">
+                  <Link to="/ChatWindow">Chat</Link>
+                </li>
+              </ul>
+            </nav>
+              <Route path="/ChatWindow" component={ChatWindow} />
+              <Route path="/About" component={About} />
+        </Router>
+      </div>
       
-        <div className="container">
-          <div className="spacer">
-         <div className="row">
-           <div className="col-3"></div>
-              <div className="chat-window col-6">
-                  <div className="chat-window-wrapper" style={ containerStyle } >
-                    <MessageList messages={this.state.messages} currentUser={this.state.currentUser}/> 
-                  </div> 
-                  <div>
-                    <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
-                  </div>
-              </div>
-              <div className="col-3"></div>
-            </div>
-            </div>
-        </div>
+        
       
      
     
