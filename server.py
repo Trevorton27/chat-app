@@ -25,7 +25,7 @@ def get_users_endpoint():
         user_id = create_user(post_request['username'])
         return jsonify(user_id)
      else:
-        query_param = request.args.get({"UserId": user_id})
+        query_param = request.args.get('user_id')
         if query_param:
             user = get_single_user(query_param)
             return jsonify(user)
@@ -38,7 +38,6 @@ def get_messages_endpoint():
     if request.method == 'POST':
 
         post_request = request.get_json()
-
         print('post_request %s' % post_request)
         
         message = create_message(post_request['user_id'], post_request['text'])
