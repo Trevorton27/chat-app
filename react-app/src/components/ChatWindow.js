@@ -76,10 +76,10 @@ getMessages() {
            <div className="col-3"></div>
               <div className="chat-window col-6">
                   <div className="chat-window-wrapper" style={ containerStyle } >
-                    <MessageList messages={this.state.messages} currentUser={this.state.currentUser}/> 
+                    <MessageList messages={this.props.messages} currentUser={this.props.currentUser}/> 
                   </div> 
                   <div>
-                    <SendMessageForm getMessages={this.getMessages} sendMessage={this.sendMessage} />
+                    <SendMessageForm getMessages={this.props.getMessages} sendMessage={this.props.sendMessage} />
                   </div>
               </div>
               <div className="col-3"></div>
