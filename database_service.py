@@ -39,7 +39,7 @@ def get_messages():
             "text": message[2],
             "created_at": message[3]
         })
-        
+          
     return messages
 
 def get_single_user(id):

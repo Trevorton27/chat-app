@@ -87,7 +87,7 @@ getMessages() {
                 </li>
               </ul>
             </nav>
-              <Route path="/ChatWindow" component={ChatWindow} />
+              <Route path="/ChatWindow" component={ChatWindow} sendMessage={this.state.sendMessage} getMessages={this.state.getMessages} />
               <Route path="/About" component={About} />
         </Router>
       </div>
