@@ -72,4 +72,31 @@
     border-bottom: 0px;
 }
 
+#about{
+    margin-top: 20px;
+    width: 70%;
+}
 
+.card-footer {
+    max-height: 115px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right:0;
+    width: 100%;
+    background-color: #007bff;
+    margin-top: 30px;
+}
+
+#footer-button {
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+    color:#007bff;
+    border-radius: 40px;
+
+}
+
+#para {
+    color: white;
+    font-weight: bold
+}
