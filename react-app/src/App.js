@@ -88,15 +88,14 @@ getMessages() {
               </ul>
             </nav>
               <Route path="/ChatWindow" component={ChatWindow} sendMessage={this.state.sendMessage} getMessages={this.state.getMessages} />
-              <Route path="/About" component={About} />
-              <div className="card-footer text-center">
+              <Route path="/About" component={About} />     
+              <div className="footer text-center">
                 <div className="card-body">
                   <p className="card-title1" id="para">Psst. Click the button below to visit my personal website.</p>
-                  <a id="footer-button" href="https://trevormearns.com/" type="button" className="btn1 btn-primary">Click Me.</a>
+                  <a id="footer-button" href="https://trevormearns.com/" type="button" className="btn btn-light btn-lg">Click Me.</a>
                 </div>      
-            </div>
-        </Router>
-            
+              </div>
+        </Router>     
       </div>
       
         

@@ -1,0 +1,1 @@
+web:py server.py && cd react-app npm run build
