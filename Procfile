@@ -1,1 +1,1 @@
-web:py server.py && npm run build
+web: gunicorn app:app
