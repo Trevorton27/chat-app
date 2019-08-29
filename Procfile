@@ -1,1 +1,1 @@
-web: gunicorn app:server.py && cd react-app npm install npm run build
+web: gunicorn app:server.py
